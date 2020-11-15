@@ -27,32 +27,42 @@
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar color="primary">
-      <button
-        type="button"
-        aria-label="Toggle sidenav"
-        mat-icon-button
-        (click)="toogleSidenav()"
-        *ngIf="isHandset$ | async"
-      >
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-      </button>
+    <mat-toolbar
+      color="primary"
+      fxLayout="row"
+      fxLayoutAlign="space-between center"
+    >
+      <div class="menu-right" fxHide.xs="true">
+        <span>Arshad</span>
+      </div>
       <div
         fxLayout="row"
-        fxLayoutGap="30px"
-        fxLayoutAlign="stretch"
-        *ngIf="!(isHandset$ | async)"
+        fxLayoutAlign="end center"
+        fxLayoutAlign.xs="start center"
       >
         <button
-          fxFlex="auto"
-          fxFlexAlign="space-between"
-          mat-stroked-button
-          color="basic"
-          *ngFor="let item of menuItems"
+          type="button"
+          aria-label="Toggle sidenav"
+          fxFlexAlign="flex-start"
+          mat-icon-button
+          (click)="toogleSidenav()"
+          fxHide.gt-md="true"
         >
-          <mat-icon aria-label="Side nav toggle icon">{{ item.icon }}</mat-icon>
-          {{ item.name | titlecase }}
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
         </button>
+        <div fxLayout="row" fxLayoutGap="30px" *ngIf="!(isHandset$ | async)">
+          <button
+            fxFlex="auto"
+            mat-stroked-button
+            color="basic"
+            *ngFor="let item of menuItems"
+          >
+            <mat-icon aria-label="Side nav toggle icon">{{
+              item.icon
+            }}</mat-icon>
+            {{ item.name | titlecase }}
+          </button>
+        </div>
       </div>
     </mat-toolbar>
     <router-outlet></router-outlet>
