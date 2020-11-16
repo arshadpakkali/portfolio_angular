@@ -1,0 +1,15 @@
+.container {
+  min-height: 100vh;
+}
+
+.crop {
+  width: 250px;
+  height: 250px;
+  overflow: hidden;
+  border-radius: 50%; /*don't forget prefixes*/
+  img {
+    width: 400px;
+    height: 300px;
+    margin: -75px -500px 0 -100px;
+  }
+}
